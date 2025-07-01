@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Button from './Button';
+import { Button } from '@/components/ui/button';
 
 /**
  * Custom hook for managing tasks with localStorage persistence
@@ -84,30 +84,30 @@ const TaskManager = () => {
             placeholder="Add a new task..."
             className="flex-grow px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
           />
-          <Button type="submit" variant="primary">
+          <Button type="submit" variant="outline" size="sm">
             Add Task
           </Button>
         </div>
       </form>
 
-      {/* Filter buttons */}
+      {/* Filter Buttons */}
       <div className="flex gap-2 mb-4">
         <Button
-          variant={filter === 'all' ? 'primary' : 'secondary'}
+          variant={filter === 'all' ? 'default' : 'secondary'}
           size="sm"
           onClick={() => setFilter('all')}
         >
           All
         </Button>
         <Button
-          variant={filter === 'active' ? 'primary' : 'secondary'}
+          variant={filter === 'active' ? 'default' : 'secondary'}
           size="sm"
           onClick={() => setFilter('active')}
         >
           Active
         </Button>
         <Button
-          variant={filter === 'completed' ? 'primary' : 'secondary'}
+          variant={filter === 'completed' ? 'default' : 'secondary'}
           size="sm"
           onClick={() => setFilter('completed')}
         >
@@ -143,7 +143,7 @@ const TaskManager = () => {
                 </span>
               </div>
               <Button
-                variant="danger"
+                variant="destructive"
                 size="sm"
                 onClick={() => deleteTask(task.id)}
                 aria-label="Delete task"
