@@ -1,31 +1,38 @@
 import React from 'react'
 import './App.css'
-import { Footer, Forgot, LandingPage, Login, Navbar, SignIn, TaskManager, ProtectedRoute
-} from './components'
-import { BrowserRouter as Router, Routes, Route,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ThemeProvider, ThemeContext } from './context/ThemeContext'
+import { Navbar, Footer, TaskManager, LandingPage, About, Features, Contact } from '@/components'
 
+
+const ThemeToggle = () => {
+  const { theme, toggleTheme } = React.useContext(ThemeContext);
+  return (
+    <button
+      onClick={toggleTheme}
+      className="fixed top-4 right-4 px-3 py-1 rounded bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow"
+    >
+      {theme === 'light' ? '🌞 Light' : '🌙 Dark'}
+    </button>
+  );
+};
 
 const App = () => {
   return (
-    <Router>
-      <Navbar />
+    <ThemeProvider>
+      <Router>
+        <ThemeToggle />
+        <Navbar />
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignIn />} />
-          <Route path="/forgot-password" element={<Forgot />} />
           <Route path="/" element={<LandingPage />} />
-          <Route
-          element={<ProtectedRoute>
-            <TaskManager />
-          </ProtectedRoute>
-          }>
-          <Route path="/task-manager" element={<TaskManager />} />
-          </Route>
+          <Route path='/about' element={<About />} />
+          <Route path='/features' element={<Features />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path="/task-manager" element={<TaskManager /> } />
         </Routes>
         <Footer />
       </Router>
-
+    </ThemeProvider>
   )
 }
 

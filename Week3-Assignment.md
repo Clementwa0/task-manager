@@ -11,14 +11,6 @@ Build a responsive React application using JSX and Tailwind CSS that demonstrate
 - Set up the project structure with components, pages, and utility folders
 - Configure basic routing using React Router
 
-### Task 2: Component Architecture
-- Create reusable UI components:
-  - `Button` component with different variants (primary, secondary, danger)
-  - `Card` component for displaying content in a boxed layout
-  - `Navbar` component for site navigation
-  - `Footer` component with links and copyright information
-- Implement a layout component that includes the Navbar and Footer
-- Use props to make components customizable and reusable
 
 ### Task 3: State Management and Hooks
 - Implement a `TaskManager` component that allows users to:
