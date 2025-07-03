@@ -1,12 +1,135 @@
-# React + Vite
+Here's a full `README.md` tailored for your **Task Manager App** built with **React**, **React Router**, **ShadCN UI**, and **Dark Mode Toggle**. It's clean, professional, and includes setup instructions, features, and tech stack:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+### 📘 `README.md`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+````markdown
+# 📝 Task Manager App
 
-## Expanding the ESLint configuration
+A modern, responsive Task Manager web app built with **React** and **ShadCN UI**, featuring local storage persistence, API integration, dark mode toggle, and mobile-friendly navigation.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🌟 Features
+
+- ✅ Add, complete, delete, and filter tasks
+- 💾 Tasks persist using `localStorage`
+- 🔁 Auto-fetch initial tasks from API
+- 🎨 Dark mode toggle (system-based and manual)
+- 📱 Fully responsive layout
+- 🧭 Client-side routing using React Router
+- 🧠 Clean and modular component structure
+
+---
+
+## 🖼️ Screenshots
+
+| Light Mode | Dark Mode |
+|------------|-----------|
+| ![light](./screenshots/light-mode.png) | ![dark](./screenshots/dark-mode.png) |
+
+---
+
+## ⚙️ Tech Stack
+
+- **React + Vite**
+- **React Router DOM**
+- **TypeScript (optional) / JavaScript**
+- **ShadCN UI + Tailwind CSS**
+- **Lucide Icons**
+- **Dark Mode Context**
+- **localStorage for persistence**
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/task-manager-app.git
+cd task-manager-app
+````
+
+### 2. Install Dependencies
+
+```bash
+pnpm install
+# or
+yarn
+```
+
+### 3. Create `.env` File
+
+Create a `.env` file in the root directory and add your API URL (optional):
+
+```env
+VITE_API_URL=https://jsonplaceholder.typicode.com/todos/
+```
+
+> 🔁 If no `.env` is provided, the app still works using only localStorage.
+
+### 4. Run the Development Server
+
+```bash
+pnpm run dev 
+```
+
+---
+
+## 🛠️ Folder Structure
+
+```bash
+src/
+├── components/
+│   └── ui/               # ShadCN UI components (Button, Card, etc.)
+├── context/
+│   └── ThemeProvider.jsx # Dark mode context logic
+├── pages/
+│   └── TaskManager.jsx   # Main Task Manager page
+├── constants/
+│   └── index.js          # Routes and links
+├── App.jsx               # App routes and layout
+├── main.jsx              # React root
+```
+
+---
+
+## 🧪 Available Commands
+
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `pnpm run dev`     | Start local dev server   |
+| `pnpm run build`   | Build app for production |
+| `pnpm run preview` | Preview production build |
+
+---
+
+## 📦 Deployment
+
+You can deploy the app using:
+
+* [Vercel](https://vercel.com/)
+* [Netlify](https://www.netlify.com/)
+* [Firebase Hosting](https://firebase.google.com/products/hosting)
+* Or any static hosting provider
+
+---
+
+## 👨‍💻 Author
+
+**Muli Clement Wambua**
+📫 [clementwa01@gmail.com](mailto:clementwa01@gmail.com)
+🔗 [LinkedIn](https://www.linkedin.com/in/muli-clement-b5b17b308/)
+🌐 [Portfolio](https://klmportfolio.netlify.app/)
+💻 [GitHub](https://github.com/Clementwa0)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+```
+
