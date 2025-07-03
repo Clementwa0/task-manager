@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
+import { toast } from "sonner"
 
 const useLocalStorageTasks = () => {
   const [tasks, setTasks] = useState(() => {
-    const saved = localStorage.getItem('tasks')
+  const saved = localStorage.getItem('tasks')
     return saved ? JSON.parse(saved) : []
   })
+  const [error, setError] =  useState('');
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }, [tasks])
 
   const addTask = (text) => {
-    if (typeof text === 'string' && text.trim()) {
+    try {
+       if (typeof text === 'string' && text.trim()) {
       setTasks((prev) => [
         ...prev,
         {
@@ -23,6 +26,11 @@ const useLocalStorageTasks = () => {
         },
       ])
     }
+    toast.success(`Task ${tasks.id} added Successfully`)
+    } catch (error) {
+    toast.error('Type in your Task')
+    }
+   
   }
 
   const toggleTask = (id) => {
@@ -34,7 +42,12 @@ const useLocalStorageTasks = () => {
   }
 
   const deleteTask = (id) => {
-    setTasks((prev) => prev.filter((task) => task.id !== id))
+    try {
+       setTasks((prev) => prev.filter((task) => task.id !== id))
+        toast.success(`Task deleted Successfully`)
+    } catch (error) {
+      setError('Task not Deleted')
+    }
   }
 
   const clearAll = () => setTasks([])
@@ -67,13 +80,13 @@ const TaskManager = () => {
       try {
         const res = await fetch(import.meta.env.VITE_API_URL)
         if (!res.ok) throw new Error('Failed to fetch tasks')
+          toast.error('Check Your network Connection and try again')
         const data = await res.json()
-
         const todos = data.slice(0, 10)
 
         const mapped = todos.map((task) => ({
           id: `api-${task.id}`,
-          text: task.title,
+          text: task.title || task.todo,
           completed: task.completed,
           createdAt: new Date().toISOString(),
         }))
@@ -93,9 +106,9 @@ const TaskManager = () => {
   }, [])
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-100 to-blue-100 p-4 mt-14">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 p-4 mt-14">
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-3xl p-6">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">📝 Task Manager</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">📝 Task Manager</h2>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="mb-6">
@@ -103,17 +116,26 @@ const TaskManager = () => {
             <input
               type="text"
               value={newTaskText}
+              required
+              
               onChange={(e) => setNewTaskText(e.target.value)}
               placeholder="Add a new task..."
-              className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+              className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             />
             <Button type="submit" variant="default" size="sm">
               Add
             </Button>
-            <Button variant="destructive" size="sm" onClick={() => {
-              clearAll();
-              alert('Are you sure you want to clear all tasks?');
-            }} className="mt-2 sm:mt-0">
+            <Button
+              type="button"
+              variant="destructive"
+              size="sm"
+              onClick={() => {
+                if (confirm("Are you sure you want to clear all tasks?")) {
+                  clearAll()
+                }
+              }}
+              className="mt-2 sm:mt-0"
+            >
               Clear All
             </Button>
           </div>
@@ -133,12 +155,12 @@ const TaskManager = () => {
         </div>
 
         {/* Tasks */}
-        {loading && <p className="text-center text-gray-500">Loading tasks...</p>}
+        {loading && <p className="text-center text-gray-500 dark:text-gray-400">Loading tasks...</p>}
         {error && <p className="text-center text-red-500">{error}</p>}
 
         <ul className="space-y-3">
           {!loading && filteredTasks.length === 0 ? (
-            <li className="text-center text-gray-500">No tasks found</li>
+            <li className="text-center text-gray-500 dark:text-gray-400">No tasks found</li>
           ) : (
             filteredTasks.map((task) => (
               <li
@@ -153,12 +175,19 @@ const TaskManager = () => {
                     className="mt-1 sm:mt-0 h-5 w-5 text-blue-600 rounded focus:ring-blue-500"
                   />
                   <span
-                    className={`break-words ${task.completed ? 'line-through text-gray-500 dark:text-gray-400' : ''}`}
+                    className={`break-words ${
+                      task.completed ? 'line-through text-gray-500 dark:text-gray-400' : 'text-gray-800 dark:text-white'
+                    }`}
                   >
                     {task.text}
                   </span>
                 </div>
-                <Button variant="destructive" size="sm" onClick={() => deleteTask(task.id)} className="mt-2 sm:mt-0">
+                <Button 
+                variant="destructive" 
+                size="sm" 
+                onClick={() => deleteTask(task.id)} 
+                className="mt-2 sm:mt-0"
+              >
                   Delete
                 </Button>
               </li>

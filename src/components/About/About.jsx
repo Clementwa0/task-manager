@@ -3,8 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const About = () => {
   return (
-    <section className="min-h-screen w-full flex items-center justify-center bg-background px-4">
-      <Card className="w-full max-w-3xl shadow-xl">
+    <section className="min-h-screen w-full flex items-center justify-center bg-background px-4 dark:bg-gray-800">
+      <Card className="w-full max-w-3xl shadow-xl dark:bg-gray-800">
         <CardHeader>
           <CardTitle className="text-2xl text-center">About Us</CardTitle>
         </CardHeader>

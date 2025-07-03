@@ -27,7 +27,7 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="min-h-screen w-full bg-background px-4 py-12 flex items-center justify-center">
+    <section className="min-h-screen w-full bg-background px-4 py-12 flex items-center justify-center dark:bg-gray-800">
       <div className="max-w-5xl w-full space-y-12">
         <div className="text-center space-y-2">
           <h2 className="text-3xl font-bold text-foreground">Key Features</h2>
@@ -38,7 +38,7 @@ const Features = () => {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
-            <Card key={index} className="rounded-xl border border-border shadow-sm">
+            <Card key={index} className="rounded-xl border border-border shadow-sm hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700">
               <CardHeader className="flex items-center gap-3">
                 {feature.icon}
                 <CardTitle className="text-lg">{feature.title}</CardTitle>

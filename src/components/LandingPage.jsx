@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 const LandingPage = () => {
   return (
-    <section className="min-h-screen w-full bg-background flex items-center justify-center px-4">
+    <section className="min-h-screen w-full bg-background flex items-center justify-center px-4 dark:bg-gray-800">
       <div className="max-w-3xl text-center space-y-6">
         <h1 className="text-4xl sm:text-5xl font-bold text-foreground leading-tight">
           Organize Your Workflow, Boost Your Productivity

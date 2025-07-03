@@ -4,7 +4,7 @@ import { links } from '@/constants'
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 border-t py-8">
+    <footer className="bg-gray-100 border-t py-8 dark:bg-gray-800 dark:border-gray-700">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 gap-4">
         
         {/* Logo */}
