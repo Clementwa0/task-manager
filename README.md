@@ -1,9 +1,3 @@
-Here's a full `README.md` tailored for your **Task Manager App** built with **React**, **React Router**, **ShadCN UI**, and **Dark Mode Toggle**. It's clean, professional, and includes setup instructions, features, and tech stack:
-
----
-
-### 📘 `README.md`
-
 ````markdown
 # 📝 Task Manager App
 
@@ -27,7 +21,9 @@ A modern, responsive Task Manager web app built with **React** and **ShadCN UI**
 
 | Light Mode | Dark Mode |
 |------------|-----------|
-| ![light](./screenshots/light-mode.png) | ![dark](./screenshots/dark-mode.png) |
+![light](./screenshots/lightmode.png)
+ ![dark](./screenshots/task.png)
+ ![card](./screenshots/cards.png)
 
 ---
 

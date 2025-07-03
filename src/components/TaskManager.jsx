@@ -26,7 +26,7 @@ const useLocalStorageTasks = () => {
         },
       ])
     }
-    toast.success(`Task ${tasks.id} added Successfully`)
+    toast.success(`Task added Successfully`)
     } catch (error) {
     toast.error('Type in your Task')
     }
@@ -80,7 +80,6 @@ const TaskManager = () => {
       try {
         const res = await fetch(import.meta.env.VITE_API_URL)
         if (!res.ok) throw new Error('Failed to fetch tasks')
-          toast.error('Check Your network Connection and try again')
         const data = await res.json()
         const todos = data.slice(0, 10)
 
